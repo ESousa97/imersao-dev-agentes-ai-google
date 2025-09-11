@@ -1,4 +1,4 @@
-# 🤖 Agente Curador de Contexto Pessoal
+# 🤖 Agente Clip Windows
 
 Um agente de IA que centraliza tudo que você consome/produz (anotações, e-mails, chats, PDFs, tarefas) em **memórias estruturadas**, e usa essas memórias para **sugerir ações e reflexões** no momento certo.
 
