@@ -2,6 +2,13 @@
 
 Bem-vindo à documentação completa do Botinho - Chat AI com Google Gemini Flash 2.0!
 
+<div align="center">
+  <img src="/img/Screenshot_1.png" alt="Tela inicial do Botinho" width="600"/>
+  <br><br>
+  <img src="/img/Screenshot_2.png" alt="Conversa com Botinho" width="600"/>
+</div>
+
+
 ## 📋 Índice da Documentação
 
 ### 🚀 Início Rápido
