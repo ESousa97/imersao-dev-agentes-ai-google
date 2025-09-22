@@ -1,455 +1,218 @@
-# 🤖 Agente Clip Windows
+# 🤖 Botinho - Chat AI com Google Gemini Flash 2.0
 
-Um agente de IA que centraliza tudo que você consome/produz (anotações, e-mails, chats, PDFs, tarefas) em **memórias estruturadas**, e usa essas memórias para **sugerir ações e reflexões** no momento certo.
+Uma assistente virtual inteligente desenvolvida com **Google Gemini Flash 2.0**, **FastAPI** e sistema de memória conversacional avançado.
 
-## 📑 Índice
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)
+![Gemini](https://img.shields.io/badge/Google_Gemini-Flash_2.0-orange.svg)
+![Status](https://img.shields.io/badge/Status-Ativo-brightgreen.svg)
 
-- [🚀 Configuração Inicial](#-configuração-inicial-2-minutos)
-- [🎬 Primeiros Passos](#-primeiros-passos)
-- [📖 Como Usar - Linha de Comando](#-como-usar---linha-de-comando)
-- [✨ Funcionalidades Detalhadas](#-funcionalidades-detalhadas)
-- [🎯 Casos de Uso Práticos](#-casos-de-uso-práticos)
-- [🔧 Arquivos do Sistema](#-arquivos-do-sistema)
-- [🛠️ Personalização](#️-personalização)
-- [🔍 Solução de Problemas](#-solução-de-problemas)
-- [🚀 Fluxo de Trabalho Recomendado](#-fluxo-de-trabalho-recomendado)
-- [🎯 Próximos Passos](#-próximos-passos)
+## 🚀 Características Principais
 
----
+- **🧠 IA Avançada**: Integração direta com Google Gemini Flash 2.0
+- **💭 Memória Conversacional**: Sistema de contexto que mantém histórico entre interações
+- **🎯 Base de Conhecimento**: Respostas especializadas para políticas empresariais e TI
+- **⚡ Performance**: Arquitetura otimizada sem dependências pesadas
+- **🌐 Interface Web**: Chat em tempo real com design responsivo
+- **📊 Análise de Continuidade**: Detecta automaticamente mudanças de tópico
+- **🔄 Gestão de Sessões**: Suporte a múltiplas conversas simultâneas
 
-## 🚀 Configuração Inicial (2 minutos)
+## 📋 Pré-requisitos
 
-### 1. Verificar Ambiente
-```powershell
-python setup.py --check
+- **Python 3.8 ou superior**
+- **Chave API do Google Gemini**
+- **Conexão com internet**
+
+## 🛠️ Instalação Rápida
+
+### 1. Clone o repositório
+```bash
+git clone https://github.com/ESousa97/imersao-dev-agentes-ai-google.git
+cd imersao-dev-agentes-ai-google
 ```
 
-### 2. Configuração Automática (Recomendado)
-```powershell
-python setup.py
-```
-Este comando te guia pela configuração da API key e testa tudo automaticamente.
-
-### 3. Configuração Manual
-```powershell
-# 1. Obter API key em: https://aistudio.google.com/app/apikey
-# 2. Configurar variável de ambiente
-$env:GOOGLE_API_KEY="sua_chave_do_gemini"
-
-# 3. Verificar se está funcionando
-python demo.py
+### 2. Instale as dependências
+```bash
+pip install fastapi uvicorn google-generativeai
 ```
 
-## 🎬 Primeiros Passos
-
-### Demo Rápida (5 minutos)
-```powershell
-python demo.py
-```
-Demonstra todas as funcionalidades principais com dados de exemplo.
-
-### Menu Interativo
-```powershell
-python cli.py
-```
-Interface completa com menu guiado para todas as funcionalidades.
-
-## 📖 Como Usar - Linha de Comando
-
-### 📝 Adicionando Memórias
-```powershell
-# Texto simples
-python cli.py --texto "Reunião importante amanhã sobre projeto X"
-
-# Com tipo e tags
-python cli.py --texto "Email do cliente pedindo antecipação" --tipo "email" --tags "urgente,cliente,projeto"
-
-# Importar arquivo
-python cli.py --arquivo documento.txt --tipo "pdf" --tags "estudo,importante"
-```
-
-### 📋 Consultando Contexto ("Onde Parei")
-```powershell
-# Contexto geral
-python cli.py --contexto "geral"
-
-# Contexto específico
-python cli.py --contexto "trabalho"
-python cli.py --contexto "estudos"
-python cli.py --contexto "projeto X"
-```
-
-### 🤔 Reflexão Estratégica
-```powershell
-# Reflexão geral (últimos 14 dias)
-python cli.py --reflexao "geral"
-
-# Reflexão sobre tema específico
-python cli.py --reflexao "carreira"
-python cli.py --reflexao "vida pessoal"
-
-# Período personalizado (via menu interativo)
-python cli.py  # Escolha opção 3
-```
-
-### 🔍 Buscando Informações
-```powershell
-# Buscar memórias
-python cli.py --buscar "projetos pendentes"
-python cli.py --buscar "deadlines esta semana"
-
-# Pergunta rápida
-python cli.py --pergunta "O que tenho de importante para fazer hoje?"
-python cli.py --pergunta "Quais são meus maiores bloqueios?"
-```
-
-### 🔔 Nudges Proativos
-```powershell
-# Verificar lembretes inteligentes
-python cli.py --nudges
-```
-
-### 📊 Estatísticas
-```powershell
-# Ver estatísticas do banco de memórias
-python cli.py --stats
-```
-
-### ❓ Ajuda
-```powershell
-# Ver todas as opções
-python cli.py --help
-```
-
-## ✨ Funcionalidades Detalhadas
-
-### 🧠 Curadoria Inteligente
-O agente automaticamente extrai de qualquer texto:
-- **Fatos**: Informações objetivas
-- **Decisões**: Escolhas tomadas
-- **Metas**: Objetivos declarados ou implícitos
-- **Bloqueios**: Impedimentos e obstáculos
-- **Perguntas**: Dúvidas abertas
-- **Prazos**: Datas normalizadas (YYYY-MM-DD)
-- **Sentiment**: Positivo/Neutro/Negativo
-- **Importância**: Escala 1-5
-
-### 📋 Painéis de Contexto
-Cada consulta gera um painel estruturado:
-```
-🏃 ONDE PAREI:
-• Última reunião: definiu 3 metas para Q1
-• Pendência: aguardando aprovação do orçamento
-• Progresso: 60% do projeto X concluído
-
-🎯 METAS E PRAZOS:
-• Lançar produto até março/2025
-• Crescer vendas 30% até junho/2025
-• Apresentação para investidores em 15/02
-
-🚧 BLOQUEIOS E HIPÓTESES:
-• Equipe pequena: contratar 2 pessoas
-• Orçamento limitado: buscar parcerias
-
-⚡ PRÓXIMAS AÇÕES:
-1. Preparar apresentação para investidores
-2. Iniciar processo de contratação
-3. Definir estratégia de parcerias
-```
-
-### 🤔 Reflexão Estratégica
-Analisa suas memórias e identifica:
-- **Contradições**: Entre o que você fala e faz
-- **Perguntas Profundas**: Para clarificar prioridades
-- **Nudges Práticos**: Lembretes diretos
-- **Próximos Passos**: Ações concretas
-
-### 🔔 Nudges Proativos
-O agente automaticamente detecta e te alerta sobre:
-- **😴 Metas Estagnadas**: Sem movimento há 5+ dias
-- **⚠️ Contradições**: Decisões conflitantes
-- **⏰ Prazos Próximos**: Deadlines em 72h
-- **🔄 Bloqueios Repetidos**: Obstáculos recorrentes
-
-### 🔍 Busca Semântica
-- Busca por significado, não só palavras-chave
-- Embeddings do Google Gemini
-- Resultados ordenados por relevância e importância
-
-## 🎯 Casos de Uso Práticos
-
-### 📅 Gestão Diária
-```powershell
-# Manhã: Ver o que fazer hoje
-python cli.py --contexto "hoje"
-python cli.py --nudges
-
-# Durante o dia: Adicionar anotações
-python cli.py --texto "Reunião com cliente: ele quer antecipar prazo para dezembro"
-
-# Noite: Pergunta rápida
-python cli.py --pergunta "O que consegui avançar hoje?"
-```
-
-### 📊 Planejamento Semanal
-```powershell
-# Segunda: Contexto da semana
-python cli.py --contexto "esta semana"
-
-# Sexta: Reflexão semanal
-python cli.py --reflexao "semana"
-```
-
-### 🎯 Gestão de Projetos
-```powershell
-# Adicionar atualizações
-python cli.py --texto "Projeto X: fase de testes concluída, encontrados 3 bugs críticos" --tags "projeto-x,bugs"
-
-# Ver status
-python cli.py --contexto "projeto X"
-
-# Identificar bloqueios
-python cli.py --pergunta "Quais são os principais riscos do projeto X?"
-```
-
-### 📧 Inbox Zero
-```powershell
-# Processar emails importantes
-python cli.py --texto "Email do CEO: nova diretriz de home office, máximo 2 dias por semana" --tipo "email" --tags "politica,importante"
-
-# Extrair tarefas
-python cli.py --buscar "tarefas pendentes email"
-```
-
-### 📚 Gestão de Aprendizado
-```powershell
-# Adicionar insights de estudo
-python cli.py --texto "Curso de Python: aprendi sobre decorators, mas ainda confuso com metaclasses" --tags "python,estudo"
-
-# Ver progresso
-python cli.py --contexto "estudos python"
-
-# Identificar gaps
-python cli.py --pergunta "O que ainda preciso aprender em Python?"
-```
-
-## 🔧 Arquivos do Sistema
-
-### Core
-- **`models.py`**: Estruturas de dados (Pydantic)
-- **`curadoria.py`**: Extração inteligente via LLM
-- **`db.py`**: Persistência híbrida SQLite + Chroma
-- **`agent.py`**: Context Builder + Reflexão + Nudges
-- **`cli.py`**: Interface de linha de comando
-
-### Utilitários
-- **`config.py`**: Configurações centralizadas
-- **`setup.py`**: Configuração inicial guiada
-- **`demo.py`**: Demonstração das funcionalidades
-- **`teste_agente.py`**: Teste completo do sistema
-
-### Documentação
-- **`README.md`**: Este arquivo (documentação completa)
-- **`GUIA_RAPIDO.md`**: Instruções condensadas
-- **`.env.example`**: Template de configuração
-
-## 🛠️ Personalização
-
-### Ajustar Configurações
-Edite `config.py` para personalizar:
+### 3. Configure a chave API
+Edite o arquivo `botinho.py` e substitua a chave API na linha 24:
 ```python
-# Limites e Performance
-MAX_TEXT_LENGTH = 12000  # chars para curadoria
-MAX_MEMORIES_CONTEXT = 15  # memórias por contexto
-
-# Nudges e Proatividade
-GOAL_STALL_DAYS = 5      # dias sem movimento
-DEADLINE_WARNING_DAYS = 3 # dias antes do prazo
+self.GEMINI_API_KEY = "SUA_CHAVE_API_AQUI"
 ```
 
-### Personalizar Prompts
-Modifique os prompts no `config.py` para ajustar o comportamento do agente.
+### 4. Execute o Botinho
+```bash
+python botinho.py
+```
 
-### Adicionar Novos Tipos
-Edite `models.py` para adicionar novos tipos de fonte:
+### 5. Acesse a interface
+Abra seu navegador em: **http://localhost:8000**
+
+## 🎯 Como Usar
+
+### Interface Web
+1. Acesse `http://localhost:8000`
+2. Digite sua mensagem no campo de chat
+3. Pressione Enter ou clique em "Enviar"
+4. O Botinho responderá mantendo o contexto da conversa
+
+### API REST
+```bash
+# Enviar mensagem via API
+curl -X POST "http://localhost:8000/api/chat" \
+     -H "Content-Type: application/json" \
+     -d '{"mensagem": "Olá!", "session_id": "minha-sessao"}'
+```
+
+## 🏗️ Arquitetura
+
+```
+botinho.py
+├── Config              # Configurações e base de conhecimento
+├── Botinho (Classe)    # Motor principal da IA
+│   ├── Memória         # Sistema de conversas
+│   ├── Análise         # Continuidade de tópicos
+│   └── Conhecimento    # Base de dados virtual
+└── FastAPI             # Servidor web e API
+```
+
+## 📚 Base de Conhecimento
+
+O Botinho possui conhecimento especializado em:
+
+### 📋 Políticas da Empresa
+- Horários de trabalho
+- Política de férias
+- Home office
+- Equipamentos corporativos
+
+### 🔧 Procedimentos de TI
+- Reset de senhas
+- Solicitação de acessos
+- Backup de dados
+- Configuração de VPN
+
+### 🚨 Problemas Técnicos
+- Conectividade Wi-Fi
+- Performance de email
+- Problemas com impressoras
+- Otimização de sistema
+
+## 🧠 Sistema de Memória
+
+O Botinho utiliza um sistema avançado de memória que:
+- **Mantém contexto** entre mensagens
+- **Analisa continuidade** de tópicos automaticamente
+- **Categoriza conversas** por assunto
+- **Gerencia múltiplas sessões** simultaneamente
+
+### Exemplo de Funcionamento
+```
+Usuário: "Como faço para resetar minha senha?"
+Botinho: "Para resetar sua senha, acesse o portal..."
+
+Usuário: "E se eu esquecer meu email?"
+Botinho: "Continuando sobre o reset de senha, se você esqueceu o email..."
+```
+
+## 🔧 Configuração Avançada
+
+### Variáveis de Ambiente
 ```python
-kind: Literal["note", "email", "chat", "pdf", "task", "web", "meeting"]
+# No arquivo botinho.py
+class Config:
+    GEMINI_API_KEY = "sua_chave_aqui"
+    LOG_LEVEL = "INFO"  # DEBUG, INFO, WARNING, ERROR
+    HOST = "0.0.0.0"
+    PORT = 8000
 ```
 
-## 🔍 Solução de Problemas
-
-### Erro de API Key
-```powershell
-# Verificar se está configurada
-echo $env:GOOGLE_API_KEY
-
-# Configurar novamente
-$env:GOOGLE_API_KEY="sua_chave"
-
-# Configuração permanente
-echo '$env:GOOGLE_API_KEY="sua_chave"' >> $PROFILE
+### Personalizar Base de Conhecimento
+Edite a seção `knowledge_base` no arquivo `botinho.py`:
+```python
+"sua_categoria": {
+    "item_1": "Conteúdo da resposta...",
+    "item_2": "Outro conteúdo..."
+}
 ```
 
-### Erro de Dependências
-```powershell
-# Reinstalar dependências
-pip install -U langchain langchain-google-genai langchain-community chromadb pydantic langchain-chroma
+## 📊 Monitoramento
+
+### Logs do Sistema
+O Botinho gera logs detalhados:
+- **INFO**: Operações normais
+- **ERROR**: Problemas e falhas
+- **DEBUG**: Informações técnicas
+
+### Métricas de Performance
+- Tempo de resposta da IA
+- Análise de continuidade
+- Gestão de sessões
+- Uso da base de conhecimento
+
+## 🔒 Segurança
+
+- **Chave API**: Mantenha sua chave do Gemini segura
+- **CORS**: Configurado para desenvolvimento local
+- **Validação**: Entrada de dados sanitizada
+- **Sessions**: IDs únicos para isolamento
+
+## 🐛 Solução de Problemas
+
+### Erro "Expecting value: line 1 column 1"
+- **Causa**: Problema na análise JSON do Gemini
+- **Solução**: Sistema automaticamente usa fallback
+
+### Servidor não inicia
+```bash
+# Verificar se a porta está livre
+netstat -ano | findstr :8000
+
+# Usar porta alternativa
+uvicorn botinho:app --port 8001
 ```
 
-### Performance Lenta
-- Reduza `MAX_MEMORIES_CONTEXT` no `config.py`
-- Use tags mais específicas para busca
-- Limite o período de reflexão (7-14 dias)
+### API Key inválida
+- Verifique se a chave do Gemini está correta
+- Confirme se o serviço está ativo no Google Cloud
 
-### Banco Corrompido
-```powershell
-# Remover bancos e recomeçar
-Remove-Item agent_memory.db
-Remove-Item -Recurse chroma_mem
-```
+## 🚀 Próximas Funcionalidades
 
-## 🚀 Fluxo de Trabalho Recomendado
+- [ ] Interface administrativa
+- [ ] Múltiplos idiomas
+- [ ] Integração com bancos de dados
+- [ ] Analytics avançados
+- [ ] Deploy em nuvem
+- [ ] Autenticação de usuários
 
-### Setup Inicial (uma vez)
-1. `python setup.py` - Configuração completa
-2. `python demo.py` - Ver funcionalidades
-3. Adicionar suas primeiras memórias
+## 🤝 Contribuição
 
-### Rotina Diária (5 minutos)
-1. **Manhã**: `python cli.py --nudges` + `python cli.py --contexto "hoje"`
-2. **Durante o dia**: Adicionar memórias importantes
-3. **Noite**: `python cli.py --pergunta "O que avancei hoje?"`
+1. Faça um Fork do projeto
+2. Crie uma branch: `git checkout -b feature/nova-funcionalidade`
+3. Commit suas mudanças: `git commit -m 'Adiciona nova funcionalidade'`
+4. Push para a branch: `git push origin feature/nova-funcionalidade`
+5. Abra um Pull Request
 
-### Rotina Semanal (15 minutos)
-1. **Segunda**: `python cli.py --contexto "esta semana"`
-2. **Sexta**: `python cli.py --reflexao "semana"`
-3. Revisar contradições e ajustar rumo
+## 📄 Licença
 
-### Rotina Mensal (30 minutos)
-1. `python cli.py --reflexao "mês"`
-2. `python cli.py --stats` - Ver estatísticas
-3. Limpar memórias irrelevantes
-
-## 🎯 Próximos Passos
-
-### Funcionalidades Planejadas
-- [ ] **OCR**: Processar PDFs e imagens automaticamente
-- [ ] **Integração Email**: Importar emails diretamente
-- [ ] **Calendário**: Sincronizar com Google Calendar
-- [ ] **Web UI**: Interface web para facilitar uso
-- [ ] **Relatórios**: Dashboards visuais de progresso
-- [ ] **API**: Endpoints REST para integrações
-- [ ] **Mobile**: App para captura rápida
-
-### Melhorias Contínuas
-- [ ] **Análise de Humor**: Detectar padrões emocionais
-- [ ] **Previsões**: Antecipar bloqueios e oportunidades
-- [ ] **Colaboração**: Compartilhar contextos com equipe
-- [ ] **Automação**: Triggers para ferramentas externas
-
-## 🏆 Diferenciais Únicos
-
-✅ **Memória Explicável**: Cada insight mostra de onde veio  
-✅ **Sempre Acionável**: 1-5 próximos passos em toda resposta  
-✅ **Offline-first**: Dados locais, LLM só para raciocínio  
-✅ **Self-aware**: O agente conhece seus padrões e te provoca  
-✅ **Evolutivo**: Fica mais inteligente com o uso  
-✅ **Privacidade**: Seus dados ficam no seu computador  
-
-## 🎊 Transforme Informação em Ação
-
-Com este agente, você nunca mais vai:
-- ❌ Esquecer compromissos importantes
-- ❌ Perder informações valiosas
-- ❌ Repetir os mesmos erros
-- ❌ Ficar estagnado sem saber o próximo passo
-- ❌ Ter contradições entre metas e ações
-
-E sempre vai:
-- ✅ Saber exatamente onde parou em qualquer projeto
-- ✅ Receber nudges quando algo importante estagnar
-- ✅ Ter próximos passos claros e priorizados
-- ✅ Identificar padrões e melhorar continuamente
-- ✅ Manter foco no que realmente importa
-
-**🚀 Comece agora: `python setup.py`**
-
----
-
-## 💡 Exemplos Práticos de Comandos
-
-### Cenário 1: Desenvolvedor trabalhando em múltiplos projetos
-```powershell
-# Adicionar atualizações de projetos
-python cli.py --texto "Projeto A: API REST finalizada, faltam testes. Projeto B: bug crítico na autenticação descoberto." --tags "desenvolvimento,projetos"
-
-# Ver status geral
-python cli.py --contexto "desenvolvimento"
-
-# Identificar gargalos
-python cli.py --pergunta "Quais projetos precisam de atenção urgente?"
-```
-
-### Cenário 2: Estudante preparando certificação
-```powershell
-# Registrar progresso de estudo
-python cli.py --texto "Estudei 3h hoje: decorators em Python dominados, mas async/await ainda confuso. Prova em 2 semanas." --tags "python,certificacao"
-
-# Ver gaps de conhecimento
-python cli.py --buscar "confuso ainda"
-
-# Planejar estudos
-python cli.py --contexto "certificacao"
-```
-
-### Cenário 3: Empreendedor gerenciando startup
-```powershell
-# Adicionar insights de reuniões
-python cli.py --texto "Reunião com investidor: interessado, mas quer ver métricas de retenção melhoradas. Prazo: próxima reunião em 15 dias." --tags "investimento,metricas"
-
-# Verificar lembretes
-python cli.py --nudges
-
-# Análise estratégica
-python cli.py --reflexao "negócio"
-```
-
-### Cenário 4: Profissional em transição de carreira
-```powershell
-# Documentar networking
-python cli.py --texto "Conversa com João (Tech Lead na empresa X): disse que vaga de Python dev vai abrir em breve. Enviar currículo semana que vem." --tags "networking,oportunidade"
-
-# Acompanhar oportunidades
-python cli.py --buscar "vagas oportunidades"
-
-# Revisar estratégia
-python cli.py --pergunta "Como está minha transição de carreira?"
-```
-
----
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 📞 Suporte
 
-- **Issues**: Abra um issue no repositório
-- **Documentação**: Este README + `GUIA_RAPIDO.md`
-- **Configuração**: Execute `python setup.py` para diagnóstico
-- **Testes**: Execute `python demo.py` para verificar funcionamento
+- **Issues**: [GitHub Issues](https://github.com/ESousa97/imersao-dev-agentes-ai-google/issues)
+- **Email**: suporte@botinho.dev
+- **Documentação**: [docs/](docs/)
+
+## 🙏 Agradecimentos
+
+- Google Gemini Team pela API incrível
+- FastAPI pela framework excepcional
+- Comunidade Python pelo suporte
 
 ---
 
-## 🎉 Pronto para Revolucionar sua Produtividade?
+**Desenvolvido com ❤️ por [ESousa97](https://github.com/ESousa97)**
 
-Este agente foi projetado para ser seu **segundo cérebro** - capturando, organizando e conectando suas informações de forma inteligente. Quanto mais você usar, mais poderoso ele se torna.
-
-**Comece pequeno, pense grande:**
-1. `python setup.py` - Configure em 2 minutos
-2. `python demo.py` - Veja a mágica acontecer
-3. `python cli.py` - Comece a usar no seu dia a dia
-
-**Em uma semana você estará:**
-- ✅ Capturando todas as informações importantes
-- ✅ Recebendo nudges inteligentes
-- ✅ Tendo clareza sobre próximos passos
-- ✅ Identificando padrões que antes passavam despercebidos
-
-**🚀 Transforme informação dispersa em ações focadas hoje mesmo!**
+*Parte da Imersão Dev Agentes AI - Google*
