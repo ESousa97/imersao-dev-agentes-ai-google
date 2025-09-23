@@ -2,6 +2,14 @@
 
 Uma assistente virtual inteligente desenvolvida com **Google Gemini Flash 2.0**, **FastAPI** e sistema de memória conversacional avançado.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ESousa97/imersao-dev-agentes-ai-google/master/img/Screenshot_1.png" 
+       alt="Tela inicial do Botinho" width="600">
+  <br><br>
+  <img src="https://raw.githubusercontent.com/ESousa97/imersao-dev-agentes-ai-google/master/img/Screenshot_2.png" 
+       alt="Conversa com Botinho" width="600">
+</p>
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)
 ![Gemini](https://img.shields.io/badge/Google_Gemini-Flash_2.0-orange.svg)
