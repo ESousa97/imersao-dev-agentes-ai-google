@@ -2,12 +2,13 @@
 
 Bem-vindo à documentação completa do Botinho - Chat AI com Google Gemini Flash 2.0!
 
-<div align="center">
-  <img src="/img/Screenshot_1.png" alt="Tela inicial do Botinho" width="600"/>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ESousa97/imersao-dev-agentes-ai-google/master/img/Screenshot_1.png" 
+       alt="Tela inicial do Botinho" width="600">
   <br><br>
-  <img src="/img/Screenshot_2.png" alt="Conversa com Botinho" width="600"/>
-</div>
-
+  <img src="https://raw.githubusercontent.com/ESousa97/imersao-dev-agentes-ai-google/master/img/Screenshot_2.png" 
+       alt="Conversa com Botinho" width="600">
+</p>
 
 ## 📋 Índice da Documentação
 
