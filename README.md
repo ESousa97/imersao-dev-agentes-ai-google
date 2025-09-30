@@ -210,7 +210,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 📞 Suporte
 
 - **Issues**: [GitHub Issues](https://github.com/ESousa97/imersao-dev-agentes-ai-google/issues)
-- **Email**: suporte@botinho.dev
 - **Documentação**: [docs/](docs/)
 
 ## 🙏 Agradecimentos
