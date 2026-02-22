@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import re
 import textwrap
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from inspect import isawaitable
 from time import monotonic
 from typing import Any
@@ -128,7 +128,7 @@ class ChatService:
     def get_or_create_conversation(self, session_id: str | None) -> tuple[str, ConversationData]:
         resolved = session_id or f"session_{uuid4()}"
         if resolved not in self.conversations:
-            self.conversations[resolved] = ConversationData(criado_em=datetime.now(UTC))
+            self.conversations[resolved] = ConversationData(criado_em=datetime.now(timezone.utc))
         return resolved, self.conversations[resolved]
 
     # -- Category / knowledge helpers ------------------------------------------
@@ -184,7 +184,7 @@ class ChatService:
                 usuario=message,
                 bot=response,
                 categoria=category,
-                timestamp=datetime.now(UTC),
+                timestamp=datetime.now(timezone.utc),
             )
         )
         conversation.historico = conversation.historico[-20:]
@@ -196,7 +196,7 @@ class ChatService:
             "context_found": bool(knowledge),
             "continues_topic": continues_topic,
             "session_id": session_id,
-            "timestamp": datetime.now(UTC),
+            "timestamp": datetime.now(timezone.utc),
             "model": (
                 self.model_client.model_name
                 if self.model_client.available
