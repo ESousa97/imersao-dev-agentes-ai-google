@@ -87,6 +87,8 @@ celerybeat-schedule
 # Environments
 .env
 .venv
+.env.local
+.env.*.local
 env/
 venv/
 ENV/
@@ -118,6 +120,7 @@ Thumbs.db
 
 # IDE
 .vscode/
+.vscode/settings.json
 .idea/
 *.swp
 *.swo
@@ -127,3 +130,14 @@ Thumbs.db
 *.tmp
 *.temp
 .tmp/
+
+# Internal reports
+BASELINE.md
+FINAL.md
+
+# Test and quality tooling
+.ruff_cache/
+*.lcov
+
+# OS
+Thumbs.db

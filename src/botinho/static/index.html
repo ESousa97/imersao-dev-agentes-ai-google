@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Botinho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/tokens.css" />
+    <link rel="stylesheet" href="/static/css/app.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="header-inner">
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <div class="brand-text">
+              <span class="brand-name">Botinho</span>
+              <span class="brand-tagline">Assistente virtual corporativo</span>
+            </div>
+          </div>
+          <span class="status-badge" role="status" aria-label="Servidor online">
+            <span class="status-dot" aria-hidden="true"></span>
+            Online
+          </span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="chat" aria-label="Chat Botinho">
+          <div id="messages" class="messages" aria-live="polite" aria-atomic="false"></div>
+          <form id="chatForm" class="chat-form" novalidate>
+            <label class="sr-only" for="messageInput">Mensagem</label>
+            <input
+              id="messageInput"
+              name="message"
+              type="text"
+              maxlength="4000"
+              placeholder="Digite sua mensagem..."
+              autocomplete="off"
+              spellcheck="true"
+              required
+            />
+            <button id="sendButton" type="submit">Enviar</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/js/chat.js" defer></script>
+  </body>
+</html>

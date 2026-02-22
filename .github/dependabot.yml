@@ -1,4 +1,6 @@
 version: 2
+# Mantém o Dependabot configurado, mas sem abrir PRs automáticos.
+# (version updates ficam bloqueados com open-pull-requests-limit: 0)
 updates:
   - package-ecosystem: "pip"
     directory: "/"

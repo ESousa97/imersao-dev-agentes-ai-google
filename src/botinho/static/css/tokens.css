@@ -1,0 +1,71 @@
+:root {
+  /* ── Palette ── */
+  --color-primary-50:  #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-success:     #16a34a;
+  --color-error:       #dc2626;
+
+  /* ── Surface & text ── */
+  --color-background:      #f1f5f9;
+  --color-surface:         #ffffff;
+  --color-surface-2:       #f8fafc;
+  --color-text-primary:    #0f172a;
+  --color-text-secondary:  #64748b;
+  --color-text-muted:      #94a3b8;
+  --color-border:          #e2e8f0;
+  --color-border-focus:    #93c5fd;
+  --color-bot-accent:      #2563eb;
+
+  /* ── Gradients ── */
+  --gradient-primary:    linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --gradient-hero:       linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #3b82f6 100%);
+  --gradient-background: linear-gradient(160deg, #f1f5f9 0%, #e0e7ef 100%);
+
+  /* ── Typography ── */
+  --font-family-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-size-xs:        0.75rem;
+  --font-size-sm:        0.875rem;
+  --font-size-base:      1rem;
+  --font-size-lg:        1.125rem;
+  --font-size-xl:        1.25rem;
+  --font-size-2xl:       1.5rem;
+  --font-weight-normal:  400;
+  --font-weight-medium:  500;
+  --font-weight-semibold:600;
+  --font-weight-bold:    700;
+  --line-height-tight:   1.25;
+  --line-height-normal:  1.5;
+
+  /* ── Spacing ── */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+
+  /* ── Radius ── */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:      0 1px 3px rgb(15 23 42 / 0.07);
+  --shadow-md:      0 4px 16px rgb(15 23 42 / 0.10);
+  --shadow-lg:      0 8px 32px rgb(15 23 42 / 0.12);
+  --shadow-primary: 0 4px 14px rgb(37 99 235 / 0.35);
+
+  /* ── Transitions ── */
+  --transition-fast:   120ms ease;
+  --transition-normal: 220ms ease;
+}

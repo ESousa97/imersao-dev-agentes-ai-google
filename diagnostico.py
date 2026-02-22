@@ -4,12 +4,13 @@
 Verifica se o ambiente está configurado corretamente
 """
 
-import sys
-import subprocess
 import importlib
-import socket
 import os
+import socket
+import subprocess
+import sys
 from datetime import datetime
+
 
 def print_header():
     """Cabeçalho do diagnóstico"""
@@ -88,10 +89,11 @@ def verificar_arquivos():
     
     arquivos = [
         "botinho.py",
-        "README.md", 
+        "README.md",
         "requirements.txt",
-        "docs/INSTALLATION.md",
-        "docs/TECHNICAL_DOCS.md"
+        "src/botinho/main.py",
+        "docs/setup.md",
+        ".env.example",
     ]
     
     status = True
@@ -114,20 +116,9 @@ def verificar_api_key():
         print("   ✅ GEMINI_API_KEY encontrada em variável de ambiente")
         return True
     
-    # Verificar no código (básico)
-    try:
-        with open("botinho.py", "r", encoding="utf-8") as f:
-            content = f.read()
-            if "AIzaSy" in content and len([line for line in content.split('\n') if 'GEMINI_API_KEY' in line and 'AIzaSy' in line]) > 0:
-                print("   ✅ API Key encontrada no código")
-                return True
-            else:
-                print("   ⚠️  API Key não configurada")
-                print("      Configure em botinho.py ou variável de ambiente")
-                return False
-    except Exception:
-        print("   ❌ Erro ao verificar API Key")
-        return False
+    print("   ⚠️  GEMINI_API_KEY não encontrada no ambiente")
+    print("      A aplicação ainda executa em modo fallback de base de conhecimento")
+    return True
 
 def instalar_dependencias():
     """Oferece instalar dependências em falta"""
@@ -136,7 +127,7 @@ def instalar_dependencias():
     print("   pip install -r requirements.txt")
     print("\n2. Para configurar API Key:")
     print("   - Obtenha em: https://aistudio.google.com/")
-    print("   - Configure em botinho.py linha 24")
+    print("   - Configure no arquivo .env (copiado de .env.example)")
     print("   - Ou: set GEMINI_API_KEY=sua_chave (Windows)")
     print("   - Ou: export GEMINI_API_KEY=sua_chave (Linux/Mac)")
     print("\n3. Para executar o Botinho:")
