@@ -19,7 +19,7 @@ settings = get_settings()
 
 
 if __name__ == "__main__":
-    browser_host = "localhost" if settings.host in {"0.0.0.0", "::"} else settings.host
+    browser_host = settings.host
     print(f"Servidor iniciando em bind {settings.host}:{settings.port}")
     print(f"Abra no navegador: http://{browser_host}:{settings.port}")
 

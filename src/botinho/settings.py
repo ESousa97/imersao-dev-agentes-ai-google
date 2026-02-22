@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     app_name: str = "Botinho - Chat AI"
     app_version: str = "2.1.0"
     environment: str = Field(default="development", alias="BOTINHO_ENV")
-    host: str = Field(default="0.0.0.0", alias="BOTINHO_HOST")
+    host: str = Field(default="127.0.0.1", alias="BOTINHO_HOST")
     port: int = Field(default=8000, alias="BOTINHO_PORT")
     log_level: str = Field(default="INFO", alias="BOTINHO_LOG_LEVEL")
 
