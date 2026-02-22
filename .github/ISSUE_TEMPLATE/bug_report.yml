@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a reproducible defect
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > [!WARNING]
+        > This repository is archived and no longer active.
+        > It remains public for study purposes only.
+        > There is no guarantee of response, review, or fix.
+
+  - type: markdown
+    attributes:
+      value: "Use this form to report defects with clear reproduction steps."
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: What is failing?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: Step-by-step instructions
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 2.1.0

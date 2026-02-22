@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Repository archived (study-only)
+    url: https://github.com/ESousa97/imersao-dev-agentes-ai-google/blob/main/CONTRIBUTING.md#repository-archive-status
+    about: This project is archived, remains public for study only, and has no response/review/fix guarantee.
+  - name: Security report
+    url: mailto:security@botinho.dev
+    about: Report vulnerabilities privately.
